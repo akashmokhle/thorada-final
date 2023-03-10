@@ -80,10 +80,12 @@
                                                     <input v-model="qty" type="text" name="quantity" class="qty-val">
                                                     <a href="#" @click="qty++" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
                                                 </div>
-                                                <div class="product-extra-link2">
+                                                <div class="product-extra-link2" >
                                                     <button type="submit" @click="addToCart()" class="button button-add-to-cart"><i class="fi-rs-shopping-cart"></i>Add to cart</button>
+                                                    
                                                     <!-- <a aria-label="Add To Wishlist" class="action-btn hover-up" href="/wishlist"><i class="fi-rs-heart"></i></a> -->
-                                                    <a href="/compare" onclick="compare.add('50');" aria-label="Compare" class="action-btn hover-up" ><i class="fi-rs-shuffle"></i></a>
+                                                    <nuxt-link style=" background-color: #ffc107;" :to="`/product/${slug}/emi`" class="action-btn hover-up" ><i class="fa-solid fa-indian-rupee-sign px-2" ></i></nuxt-link>
+                                                    <nuxt-link to="/compare" onclick="compare.add('50');" aria-label="Compare" class="action-btn hover-up" ><i class="fi-rs-shuffle"></i></nuxt-link>
                                                 </div>
                                             </div>
                                             <div class="delivery-box" >
@@ -703,7 +705,7 @@ export default {
 	.delivery-box i{
 		margin: 8px;
 		margin-left: 0px;
-		color: orange;
+		color: #ffc107;
 		font-size: 20px;
 	}
 	.delivery-box a{

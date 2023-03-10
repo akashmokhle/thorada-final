@@ -9,7 +9,7 @@
                 </div>
             </div>
         </div>
-        <div class="page-content pt-100 pb-100 ">
+        <div class="page-content pt-100 pb-100">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-8 col-lg-10 col-md-12 m-auto shadow p-5">
@@ -53,7 +53,7 @@
                                                         <label class="form-check-label" for="exampleCheckbox1"><span>Remember me</span></label>
                                                     </div>
                                                 </div>
-                                                <a class="text-muted" href="#">Forgot password?</a>
+                                                <a class="text-muted" href="forgot-password">Forgot password?</a>
                                             </div>
                                             <div class="form-group">
                                                 <nuxt-link to=""><button :disable="isLogin" class="btn btn-default pull-right">{{isLogin ? 'Loading...': 'Login'}}</button></nuxt-link>

@@ -104,10 +104,10 @@
                                 <a href="/"  class="mb-15"><img width="220" src="assets/imgs/logo/thorada-logo-black.png" class="rounded shadow" alt="logo" /></a>
                             </div>
                             <ul class="contact-infor">
-                                <li><img src="assets/imgs/theme/icons/icon-location.svg" alt="" /><strong>Address: </strong> <span>5171 W Campbell Ave undefined Kent, Utah 53127 United States</span></li>
-                                <li><img src="assets/imgs/theme/icons/icon-contact.svg" alt="" /><strong>Call Us:</strong><span>(+91) - 540-025-124553</span></li>
-                                <li><img src="assets/imgs/theme/icons/icon-email-2.svg" alt="" /><strong>Email:</strong><span>sale@Nest.com</span></li>
-                                <li><img src="assets/imgs/theme/icons/icon-clock.svg" alt="" /><strong>Hours:</strong><span>10:00 - 18:00, Mon - Sat</span></li>
+                                <li><img src="assets/imgs/theme/icons/icon-location.svg" alt="" /><strong>Address: </strong> <span> 1 Amed Road Kunwariya. Rajasthan, pin: 313327 India </span></li>
+                                <li><img src="assets/imgs/theme/icons/icon-contact.svg" alt="" /><strong>Call Us: </strong><span> +91 8233292863 </span></li>
+                                <li><img src="assets/imgs/theme/icons/icon-email-2.svg" alt="" /><strong>Email: </strong><span> luckylelctronic2017@gmail.com</span></li>
+                                <li><img src="assets/imgs/theme/icons/icon-clock.svg" alt="" /><strong>Hours: </strong><span> 10:00 - 18:00, Mon - Sat</span></li>
                             </ul>
                         </div>
                     </div>

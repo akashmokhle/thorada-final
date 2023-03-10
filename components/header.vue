@@ -17,7 +17,7 @@
                                     <span class="current-price text-brand">$38</span>
                                     <span>
                                         <span class="save-price font-md color3 ml-15">26% Off</span>
-                                        <span class="old-price font-md ml-15">$52</span>
+                                        <span class="old-price font-md ml-15"></span>
                                     </span>
                                 </div>
                             </div>
@@ -42,8 +42,10 @@
             </div>
         </div>
     </div>
+
+
     <!-- Quick view -->
-    <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+    <div v-if="product != null" class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -54,8 +56,11 @@
                                 <span class="zoom-icon"><i class="fi-rs-search"></i></span>
                                 <!-- MAIN SLIDES -->
                                 <div class="product-image-slider">
+                                    <figure class="border-radius-10" v-for="(media,index) in product.product_medias">
+                                                    <img :src="'https://thoradaadmin.sitentweb.com'+media.pm_image" alt="">                                              
+                                                </figure>
                                     <figure class="border-radius-10">
-                                        <img src="/assets/imgs/shop/product-16-2.jpg" alt="product image" />
+                                        <img src="" alt="product image" />
                                     </figure>
                                     <figure class="border-radius-10">
                                         <img src="/assets/imgs/shop/product-16-1.jpg" alt="product image" />
@@ -134,6 +139,10 @@
             </div>
         </div>
     </div>
+    <!-- Quick view -->
+
+
+
     <header class="header-area header-style-1 header-height-2">
         <div class="mobile-promotion">
             <span>Grand opening, <strong>up to 15%</strong> off all items. Only <strong>3 days</strong> left</span>
@@ -225,18 +234,18 @@
                                 <!-- COMPARE -->
 
                                 <!-- WISHLIST -->
-                                <div class="header-action-icon-2">
+                                <!-- <div class="header-action-icon-2">
                                     <a href="/wishlist">
                                         <img class="svgInject" alt="Nest" src="/assets/imgs/theme/icons/icon-heart.svg" />
                                         <span class="pro-count blue">6</span>
                                     </a>
                                     <a id="wishlist-total" href="/wishlist"><span class="lable">Wishlist</span></a>
-                                </div>
+                                </div> -->
                                 <!-- WISHLIST -->
 
                                 <!-- ADD TO CART -->
                                 <div class="header-action-icon-2 ">
-                                    <a class="mini-cart-icon" href="shop-cart.html">
+                                    <a class="mini-cart-icon" href="#">
                                         <img alt="Nest" src="/assets/imgs/theme/icons/icon-cart.svg" />
                                         <span class="pro-count blue">{{ cartItems.length }} item(s) - Rs. {{ totalCartAmount }}/- </span>
                                     </a>
@@ -245,10 +254,10 @@
                                         <ul v-for="(item, index) in cartItems" >
                                             <li>
                                                 <div class="shopping-cart-img">
-                                                    <a href="shop-product-right.html"><img alt="#" :src="item.image" /></a>
+                                                    <a href="#"><img alt="#" :src="item.image" /></a>
                                                 </div>
                                                 <div class="shopping-cart-title">
-                                                    <h6><a href="shop-product-right.html">{{item.title}}</a></h6>
+                                                    <h6><a href="#">{{item.title}}</a></h6>
                                                     <table>
                                                         <thead>
                                                             <th>Qty</th>
@@ -295,33 +304,37 @@
                                     <a href=""><span class="lable ml-0">Account</span></a>
                                     <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
                                         <ul>
+                                            <li >
+									            <nuxt-link class="mx-3" style="color: #ffc107; background-color: black;" href="javascript:void(0)">{{ userName }}</nuxt-link>
+								            </li>
                                             <li>
-                                                <a href="/account"><i class="fi fi-rs-user mr-10"></i>My Account</a>
+                                                <nuxt-link to="/account"><i class="fi fi-rs-user mr-10"></i>My Account</nuxt-link>
                                             </li>
                                             <li>
-                                                <a href="page-account.html"><i class="fi fi-rs-location-alt mr-10"></i>Order Tracking</a>
+                                                <nuxt-link to="page-account.html"><i class="fi fi-rs-location-alt mr-10"></i>Order Tracking</nuxt-link>
                                             </li>
                                             <li>
-                                                <a href="page-account.html"><i class="fi fi-rs-label mr-10"></i>My Voucher</a>
+                                                <nuxt-link to="page-account.html"><i class="fi fi-rs-label mr-10"></i>My Voucher</nuxt-link>
                                             </li>
-                                            <li>
-                                                <a href="/wishlist"><i class="fi fi-rs-heart mr-10"></i>My Wishlist</a>
-                                            </li>
-                                            <li>
-                                                <a href="page-account.html"><i class="fi fi-rs-settings-sliders mr-10"></i>Setting</a>
-                                            </li>
+                                            <!-- <li>
+                                                <nuxt-link to="/wishlist"><i class="fi fi-rs-heart mr-10"></i>My Wishlist</nuxt-link>
+                                            </li> -->
                                             <li>
                                                 <nuxt-link to="/login"><i class="fa-solid fa-right-to-bracket mr-10" v-if="userName == ''"></i> Log In</nuxt-link>
                                             </li>
+                                            <!-- <li>
+                                                <nuxt-link to="/register"><i class="fa fa-power-off mr-10" v-if="isLogged"></i> </nuxt-link>
+								            </li> -->
                                             <li>
-                                                <nuxt-link v-model="register" to="/register"><i class="fa-solid fa-user-tie" v-if="isLogged"></i> Register</nuxt-link>
+									            <nuxt-link @click="doLogout()"><i class="fa fa-power-off mr-10"></i><b> Logout</b></nuxt-link>
 								            </li>
                                             <li>
-									            <a @click="doLogout()"><i class="fa fa-power-off"></i><b> Logout</b></a>
-								            </li>
+                                                <nuxt-link to="/register"><i class="fa-solid fa-record-vinyl mr-10" v-if="isLogged"></i> Register</nuxt-link>
+                                            </li>
                                             <li>
-									            <a href="javascript:void(0)" >{{ userName }}</a>
-								            </li>
+                                                <nuxt-link to="page-account.html"><i class="fi fi-rs-settings-sliders mr-10"></i>Setting</nuxt-link>
+                                            </li>
+                                            
                                         </ul>
                                     </div>
                                 </div>
@@ -409,30 +422,30 @@
                                 <ul>
                                     <li class="hot-deals"><img src="/assets/imgs/theme/icons/icon-hot.svg" alt="hot deals" /><a href="shop-grid-right.html">Deals</a></li>
                                     <li>
-                                        <a class="active" href="/">Home <i class="fi-rs-angle-down"></i></a>
+                                        <nuxt-link class="active" to="/">Home <i class="fi-rs-angle-down"></i></nuxt-link>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <a href="/about">About <i class="fi-rs-angle-down"></i></a>
-                                    </li>
+                                    </li> -->
                                     <li>
-                                        <a href="shop-grid-right.html">Mobile <i class="fi-rs-angle-down"></i></a>
+                                        <nuxt-link to="shop-grid-right.html">Mobile <i class="fi-rs-angle-down"></i></nuxt-link>
 
                                     </li>
                                     <li>
-                                        <a href="#">Device <i class="fi-rs-angle-down"></i></a>
+                                        <nuxt-link to="#">Tv & Speaker<i class="fi-rs-angle-down"></i></nuxt-link>
 
                                     </li>
                                     <li class="position-static">
-                                        <a href="#">Mega menu <i class="fi-rs-angle-down"></i></a>
+                                        <nuxt-link to="#">Home Appliances <i class="fi-rs-angle-down"></i></nuxt-link>
                                     </li>
                                     <li>
-                                        <a href="blog-category-grid.html">Blog <i class="fi-rs-angle-down"></i></a>
+                                        <nuxt-link to="blog-category-grid.html">Smart Devices<i class="fi-rs-angle-down"></i></nuxt-link>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <a href="#">Pages <i class="fi-rs-angle-down"></i></a>
-                                    </li>
+                                    </li> -->
                                     <li>
-                                        <a href="page-contact.html">Contact</a>
+                                        <nuxt-link to="contact">Contact</nuxt-link>
                                     </li>
                                 </ul>
                             </nav>
@@ -687,6 +700,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import { apiBaseUrl } from '~~/config/url';
 import { useCartStore } from '~~/stores/cart';
 
@@ -694,6 +708,7 @@ import { useCartStore } from '~~/stores/cart';
 
 		data() {
 			return {
+                product: null,
 				userName: '',
 				isLogged: false,
 			}
